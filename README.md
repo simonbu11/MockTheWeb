@@ -1,4 +1,7 @@
 # MockTheWeb
+
+[![Build Status](https://sbull.visualstudio.com/MockTheWeb/_apis/build/status/simonbu11.MockTheWeb?branchName=master)](https://sbull.visualstudio.com/MockTheWeb/_build/latest?definitionId=1&branchName=master)
+
 A Library for mocking HttpClient
 
 # Basic usage
