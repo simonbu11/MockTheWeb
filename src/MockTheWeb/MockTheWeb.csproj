@@ -2,6 +2,14 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <Title>MockTheWeb</Title>
+        <Authors>simonbu11</Authors>
+        <PackageProjectUrl>https://github.com/simonbu11/MockTheWeb</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/simonbu11/MockTheWeb/blob/master/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/simonbu11/MockTheWeb</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>HttpClient Mock HttpClientMock</PackageTags>
+        <Company>simonbu11</Company>
     </PropertyGroup>
 
 </Project>
