@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockTheWeb", "MockTheWeb\MockTheWeb.csproj", "{CEE590D7-FBCE-4245-8A7E-553192743337}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockTheWeb.UnitTests", "MockTheWeb.UnitTests\MockTheWeb.UnitTests.csproj", "{650D3B88-5129-4191-8A77-8F96CE8044F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CEE590D7-FBCE-4245-8A7E-553192743337}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEE590D7-FBCE-4245-8A7E-553192743337}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEE590D7-FBCE-4245-8A7E-553192743337}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEE590D7-FBCE-4245-8A7E-553192743337}.Release|Any CPU.Build.0 = Release|Any CPU
+		{650D3B88-5129-4191-8A77-8F96CE8044F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{650D3B88-5129-4191-8A77-8F96CE8044F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{650D3B88-5129-4191-8A77-8F96CE8044F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{650D3B88-5129-4191-8A77-8F96CE8044F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
