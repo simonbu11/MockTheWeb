@@ -62,7 +62,7 @@ namespace MockTheWeb
             Verify(condition, Times.Exactly(times), failureMessage);
         }
 
-        public void Verify(Func<HttpRequestMessage, bool> condition, Times times = null, string failureMessage = null)
+        public void Verify(Func<HttpRequestMessage, bool> condition, Times times, string failureMessage = null)
         {
             var matches = _requests.Where(condition).ToArray();
             if (!(times ?? Times.Once()).Verify(matches.Length))
