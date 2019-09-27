@@ -1,6 +1,7 @@
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Moq;
 using Newtonsoft.Json;
 using NUnit.Framework;
 
@@ -64,6 +65,26 @@ namespace MockTheWeb.UnitTests
         }
 
         [Test]
+        public async Task ShouldSeralizerObjectToContentUsingProvidedSerializerWhenUsingJsonInitialiser()
+        {
+            var serializer = new Mock<IJsonSerializer>();
+            serializer.Setup(s => s.Serialize(It.IsAny<object>()))
+                .Returns((object o) => JsonConvert.SerializeObject(o));
+
+            var person = TestPerson.Default();
+            var builder = ResponseBuilder.Json(person, serializer.Object);
+            HttpResponseMessage message = builder;
+
+            var content = (StringContent) message.Content;
+            var body = await content.ReadAsStringAsync();
+            var actualPerson = JsonConvert.DeserializeObject<TestPerson>(body);
+            Assert.AreEqual(person.Id, actualPerson.Id);
+            Assert.AreEqual(person.FirstName, actualPerson.FirstName);
+            Assert.AreEqual(person.LastName, actualPerson.LastName);
+            serializer.Verify(s => s.Serialize(person), Moq.Times.Once);
+        }
+
+        [Test]
         public void ShouldUpdateStatusWhenWithStatusUsed()
         {
             var builder = ResponseBuilder.Response().WithStatus(HttpStatusCode.Conflict);
@@ -107,6 +128,26 @@ namespace MockTheWeb.UnitTests
             Assert.AreEqual(person.Id, actualPerson.Id);
             Assert.AreEqual(person.FirstName, actualPerson.FirstName);
             Assert.AreEqual(person.LastName, actualPerson.LastName);
+        }
+
+        [Test]
+        public async Task ShouldSeralizerObjectToContentUsingProvidedSerializerWhenUsingWithJsonContent()
+        {
+            var serializer = new Mock<IJsonSerializer>();
+            serializer.Setup(s => s.Serialize(It.IsAny<object>()))
+                .Returns((object o) => JsonConvert.SerializeObject(o));
+
+            var person = TestPerson.Default();
+            var builder = ResponseBuilder.Response().WithJsonContent(person, serializer.Object);
+            HttpResponseMessage message = builder;
+
+            var content = (StringContent) message.Content;
+            var body = await content.ReadAsStringAsync();
+            var actualPerson = JsonConvert.DeserializeObject<TestPerson>(body);
+            Assert.AreEqual(person.Id, actualPerson.Id);
+            Assert.AreEqual(person.FirstName, actualPerson.FirstName);
+            Assert.AreEqual(person.LastName, actualPerson.LastName);
+            serializer.Verify(s => s.Serialize(person), Moq.Times.Once);
         }
     }
 }

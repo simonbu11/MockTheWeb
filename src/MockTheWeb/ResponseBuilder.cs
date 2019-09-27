@@ -1,7 +1,5 @@
-using System.IO;
 using System.Net;
 using System.Net.Http;
-using System.Runtime.Serialization.Json;
 using System.Text;
 
 namespace MockTheWeb
@@ -21,20 +19,12 @@ namespace MockTheWeb
             return this;
         }
 
-        public ResponseBuilder WithJsonContent(object content)
+        public ResponseBuilder WithJsonContent(object content, IJsonSerializer serializer = null)
         {
-            var s = new DataContractJsonSerializer(content.GetType());
-            using (var stream = new MemoryStream())
-            {
-                s.WriteObject(stream, content);
+            serializer = serializer ?? new FrameworkSerializer();
 
-                stream.Position = 0;
-                using (var reader = new StreamReader(stream))
-                {
-                    var json = reader.ReadToEnd();
-                    _message.Content = new StringContent(json, Encoding.UTF8, "application/json");
-                }
-            }
+            var json = serializer.Serialize(content);
+            _message.Content = new StringContent(json, Encoding.UTF8, "application/json");
 
             return this;
         }
@@ -45,9 +35,9 @@ namespace MockTheWeb
             return new ResponseBuilder(new HttpResponseMessage(HttpStatusCode.OK));
         }
 
-        public static ResponseBuilder Json(object content)
+        public static ResponseBuilder Json(object content, IJsonSerializer serializer = null)
         {
-            return Response().WithJsonContent(content);
+            return Response().WithJsonContent(content, serializer);
         }
 
         public static implicit operator HttpResponseMessage(ResponseBuilder builder)
