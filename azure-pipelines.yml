@@ -2,7 +2,7 @@ trigger:
   batch: true
   branches:
     include:
-      - master
+      - '*'
 
 steps:
 - task: DotNetCoreCLI@2
@@ -10,16 +10,25 @@ steps:
   inputs:
     command: 'build'
     projects: 'src/**/*.csproj'
+
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
     command: 'test'
     projects: 'src/**/*.UnitTests.csproj'
+
 - task: DotNetCoreCLI@2
-  displayName: 'Nuget Package'
+  displayName: 'Nuget Package main project'
   inputs:
     command: 'pack'
     packagesToPack: 'src/MockTheWeb/MockTheWeb.csproj'
+    versioningScheme: 'off'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Nuget Package Newtonsoft project'
+  inputs:
+    command: 'pack'
+    packagesToPack: 'src/MockTheWeb/MockTheWeb.NewtonsoftJson.csproj'
     versioningScheme: 'off'
 
 - task: CopyFiles@2

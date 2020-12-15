@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockTheWeb", "MockTheWeb\Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockTheWeb.UnitTests", "MockTheWeb.UnitTests\MockTheWeb.UnitTests.csproj", "{650D3B88-5129-4191-8A77-8F96CE8044F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockTheWeb.NewtonsoftJson", "MockTheWeb.NewtonsoftJson\MockTheWeb.NewtonsoftJson.csproj", "{9467FD55-AA13-4FF8-8071-353BA985DB93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{650D3B88-5129-4191-8A77-8F96CE8044F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{650D3B88-5129-4191-8A77-8F96CE8044F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{650D3B88-5129-4191-8A77-8F96CE8044F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9467FD55-AA13-4FF8-8071-353BA985DB93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9467FD55-AA13-4FF8-8071-353BA985DB93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9467FD55-AA13-4FF8-8071-353BA985DB93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9467FD55-AA13-4FF8-8071-353BA985DB93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
