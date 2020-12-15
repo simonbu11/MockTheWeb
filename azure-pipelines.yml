@@ -5,6 +5,11 @@ trigger:
       - '*'
 
 steps:
+- task: NuGetToolInstaller@1
+  displayName: 'Use NuGet 4.9.1'
+  inputs:
+    versionSpec: '4.9.1'
+
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
@@ -12,7 +17,7 @@ steps:
     projects: 'src/**/*.csproj'
 
 - task: DotNetCoreCLI@2
-  displayName: Build
+  displayName: Test
   inputs:
     command: 'test'
     projects: 'src/**/*.UnitTests.csproj'
@@ -22,6 +27,7 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: 'src/MockTheWeb/MockTheWeb.csproj'
+    nobuild: true
     versioningScheme: 'off'
 
 - task: DotNetCoreCLI@2
@@ -29,6 +35,7 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: 'src/MockTheWeb.NewtonsoftJson/MockTheWeb.NewtonsoftJson.csproj'
+    nobuild: true
     versioningScheme: 'off'
 
 - task: CopyFiles@2
